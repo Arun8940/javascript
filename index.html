@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Mamba</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      /* Additional styles for the cart sidebar */
+      .cart-sidebar {
+          position: fixed;
+          top: 0;
+          right: -300px; /* initially hidden */
+          width: 300px;
+          height: 100%;
+          background-color: #fff;
+          z-index: 999;
+          transition: all 0.3s ease-in-out;
+      }
+      .cart-opened {
+          right: 0;
+      }
+      .card {
+          width: 18rem;
+          margin-right: 20px;
+          margin-bottom: 20px;
+      }
+
+      
+    </style>
+
+</head>
+<body>
+  
+  <header class="p-3 text-bg-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
+          <li><a href="#" class="nav-link px-2 text-dark"><b>Home</b></a></li>
+          <li><a href="#" class="nav-link px-2 text-dark"><b>Men's Top Wear</b></a></li>
+          <li><a href="#" class="nav-link px-2 text-dark"><b>Men's Bottom Wear</b></a></li>
+          <li><a href="#" class="nav-link px-2 text-dark"><b>Shoes</b></a></li>
+          <li><a href="#" class="nav-link px-2 text-dark"><B>Perfume</B></a></li>
+        </ul>
+        
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="position: relative;">
+          <input id="searchInput" type="search" class="form-control form-control-dark text-bg-white" style="font-size: 16px;" placeholder="Search..." aria-label="Search" oninput="showOptions()">
+          <div id="searchOptions" style="display: none; position: absolute; top: 100%; left: 0; background-color: white; border: 2px solid #ccc; border-top: none; z-index: 100; width:40px;"></div>
+        </form>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-primary" id="cartToggle"><i class="fa-solid fa-cart-shopping"></i>   Cart</button>
+          <a href="#"><button type="button" class="btn btn-primary"><i class="fa-solid fa-user"></i>Profile</button></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="bag">
+    <h1>Black Mamba Men's Fashion </h1>
+    <h2>The first to know about exclusive offers, latest fashion trends & style tips</h2>
+  </div>
+<br>
+
+  <div class="new">
+  <a href="#"><button><b>New Drop</b></button></a>
+  </div>
+
+  <div class="new1">
+    <a href="#"><button><b> Most Trending</b></button></a>
+    </div>
+
+  <br><br>
+
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="img/shirt1.png" class="card-img-top" alt="Dress 1">
+          <div class="card-body">
+            <h5 class="card-title">CALISTA MAUVE MANDARIN SHIRT</h5>
+            <p class="card-text">Rs.1,299</p>
+            <button onclick="addItemToCart('CALISTA MAUVE MANDARIN SHIRT', 1299 )" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/shirt2.png" class="card-img-top" alt="Dress 2">
+          <div class="card-body">
+            <h5 class="card-title">SQUASH SERENE LIGHT BROWN SHIRT</h5>
+            <p class="card-text">Rs.1,399</p>
+            <button onclick="addItemToCart('SQUASH SERENE LIGHT BROWN SHIRT', 1399)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/shirt3.png" class="card-img-top" alt="Dress 3">
+          <div class="card-body">
+            <h5 class="card-title">DAPPER STRIPE SKY BLUE SHIRT</h5>
+            <p class="card-text">Rs.1,499</p>
+            <button onclick="addItemToCart('DAPPER STRIPE SKY BLUE SHIRT', 1499)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/shirt4.png" class="card-img-top" alt="Dress 4">
+          <div class="card-body">
+            <h5 class="card-title">SEAFARER NEW    BLUE SHIRT</h5>
+            <p class="card-text">Rs. 1,399</p>
+            <button onclick="addItemToCart('SEAFARER  NEW BLUE SHIRT', 1399)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="img/short1.png" class="card-img-top" alt="Dress 1">
+          <div class="card-body">
+            <h5 class="card-title">STREAMLINED MAROON SHORTS</h5>
+            <p class="card-text">Rs.999</p>
+            <button onclick="addItemToCart('CALISTA MAUVE MANDARIN SHIRT', 999 )" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/short2.png" class="card-img-top" alt="Dress 2">
+          <div class="card-body">
+            <h5 class="card-title">STREAMLINED OLIVE SHORTS</h5>
+            <p class="card-text">Rs.999</p>
+            <button onclick="addItemToCart('SQUASH SERENE LIGHT BROWN SHIRT', 999)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/short3.png" class="card-img-top" alt="Dress 3">
+          <div class="card-body">
+            <h5 class="card-title">STREAMLINED BLACK SHORTS</h5>
+            <p class="card-text">Rs.999</p>
+            <button onclick="addItemToCart('DAPPER STRIPE SKY BLUE SHIRT', 999)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/short4.png" class="card-img-top" alt="Dress 4">
+          <div class="card-body">
+            <h5 class="card-title">STREAMLINED NAVY SHORTS</h5>
+            <p class="card-text">Rs.999</p>
+            <button onclick="addItemToCart('SEAFARER  NEW BLUE SHIRT', 999)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="img/joc1.png" class="card-img-top" alt="Dress 1">
+          <div class="card-body">
+            <h5 class="card-title">PLUSH PULSE GREEN OVERSHIRT</h5>
+            <p class="card-text">Rs.1,499</p>
+            <button onclick="addItemToCart('CALISTA MAUVE MANDARIN SHIRT', 1499 )" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/joc2.png" class="card-img-top" alt="Dress 2">
+          <div class="card-body">
+            <h5 class="card-title">PLUSH PULSE NAVY OVERSHIRT</h5>
+            <p class="card-text">Rs.1,499</p>
+            <button onclick="addItemToCart('SQUASH SERENE LIGHT BROWN SHIRT', 1499)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/joc3.png" class="card-img-top" alt="Dress 3">
+          <div class="card-body">
+            <h5 class="card-title">CONTOUR PATCH GREEN OVERSHIRT</h5>
+            <p class="card-text">Rs.1,699</p>
+            <button onclick="addItemToCart('DAPPER STRIPE SKY BLUE SHIRT', 1699)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="img/joc4.png" class="card-img-top" alt="Dress 4">
+          <div class="card-body">
+            <h5 class="card-title">SPOONDRIFT LEAD GREY OVERSHIRT</h5>
+            <p class="card-text">Rs. 1,299</p>
+            <button onclick="addItemToCart('SEAFARER  NEW BLUE SHIRT', 1299)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <button type="button" class="btn btn-secondary btn-close" aria-label="Close" id="closeCartSidebar">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="p-3">
+      <h5>Cart Items</h5>
+      <div id="cartItems"></div>
+      <div class="foot">
+        <h4>Total</h4>
+        <h2 id="total"> 0.00</h2>
+      </div>
+    </div>
+  </div>
+  <!-- End Cart Sidebar -->
+<hr>
+  <!-- Bootstrap JS -->
+  <script src="index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+
+  <div class="b-example-divider"></div>
+
+
+  <div class="container">
+    <footer class="py-5">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>OFFLINE STORE</h5>
+          <ul class="nav flex-column">
+            <p></p>
+            <p></p>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><b>Find Stores Near Me</b></a></li>
+          </ul>
+        </div>
+  
+        <div class="col-6 col-md-2 mb-3">
+          <h5>GET TO KNOW US</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQ's</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Blogs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Terms & Conditions</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-6 col-md-2 mb-3">
+          <h5>TRACK OR RETURN/EXCHANGE ORDER</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">TRACK ORDER</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">PLACE RETURN/EXCHANGE REQUEST</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">RETURNS/EXCHANGE POLICY</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>SIGN UP AND SAVE</h5>
+            <p>Sign up now and be the first to know about exclusive offers, latest fashion trends & style tips!</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top text-bg-black">
+        <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // Counter variable to keep track of items in the cart
+    var itemCount = 0;
+  
+    // JavaScript to toggle cart sidebar
+    $(document).ready(function(){
+      $('#cartToggle').click(function(){
+        $('#cartSidebar').toggleClass('cart-opened');
+      });
+  
+      // Function to close cart sidebar
+      $('#closeCartSidebar').click(function(){
+        $('#cartSidebar').removeClass('cart-opened');
+      });
+    });
+    
+    // Function to add item to cart
+    function addItemToCart(itemName, itemPrice) {
+      var cartItemsDiv = document.getElementById('cartItems');
+      var cartTotalDiv = document.getElementById('total');
+      
+      // Create a new div for the item
+      var newItemDiv = document.createElement('div');
+      newItemDiv.classList.add('item');
+      
+      // Add item details to the div
+      newItemDiv.innerHTML = itemName + ' Rs. ' + itemPrice.toFixed(2);
+      
+      // Append the item div to the cart
+      cartItemsDiv.appendChild(newItemDiv);
+      
+      // Update total price
+      var currentTotal = parseFloat(cartTotalDiv.textContent.replace('Rs. ', ''));
+      var newTotal = currentTotal + itemPrice;
+      cartTotalDiv.textContent = 'Rs. ' + newTotal.toFixed(2);
+
+      itemCount++;
+      updateCartButton();
+    }
+
+    function updateCartButton() {
+      var cartButton = document.getElementById('cartToggle');
+      cartButton.textContent = "Cart (" + itemCount + ")";
+    }
+  </script>
+  
+</body>
+</html>
+
+
+
+    
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
